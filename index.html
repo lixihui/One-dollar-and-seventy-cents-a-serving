@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Money{
+            static add(one,two){
+                let num = one.number+two.number
+                let newNum = num.toString().split('')
+                return `${newNum[0]}元${newNum[1]}角${newNum[2]}分`
+                console.log(num)
+            }
+            constructor(props){ // props去接受one和two的值
+                console.log(props)
+                console.log(this)
+                this.number = props
+            // this指向的是money{}类，在this上定义一个number，把接受到的props进行赋值
+            }
+            add(two){
+                console.log(two)
+                let num = this.number + two.number
+                let newNum = num.toString().split('')
+                return `${newNum[0]}元${newNum[1]}角${newNum[2]}分`
+                console.log(num)
+            }
+            valueOf(){
+                console.log(this.number)
+                return this.number
+            }
+            toString(){
+                let newNum = this.number.toString().split('')
+                return `${newNum[0]}元${newNum[1]}角${newNum[2]}分`
+            }
+        }
+        let one = new Money(120)
+        let two = new Money(51)
+        let three = Money.add(one, two)
+        let four = one.add(two)
+        let five = new Money(one + two)
+        console.log(`${three}, ${four}, ${five}`)
+    </script>
+</body>
+</html>
